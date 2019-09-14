@@ -42,13 +42,33 @@ body {
 
 h1 {
   color: #7e8c9f;
-  padding: 0;
+  padding: 0px 20px 0px;
   margin: 0;
+  font-weight: 300;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   cursor: default;
+}
+
+#para_above_plot1 { color: #c7cdd5;
+  text-align: left;
+  padding: 0px 0px 0px;
+  font-weight: 300;
+  font-size: 1.3em;
+}
+#para_above_plot2 { color: #c7cdd5;
+  text-align: left;
+  padding: 0px 0px 50px;
+  font-weight: 300;
+  font-size: 1.3em;
+}
+#below_stuff { color: #c7cdd5;
+  text-align: center;
+  padding: 100px 0px 0px;
+  font-weight: 300;
+  font-size: 1.3em;
 }
 
 p {
@@ -70,7 +90,7 @@ p:last-child a {
 }
 
 .stuff {
-  padding: 50px 50px 50px;
+  padding: 30px 0px 20px;
   max-width: 900px;
   margin: auto;
 }
