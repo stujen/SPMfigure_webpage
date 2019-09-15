@@ -1,10 +1,28 @@
-// document.getElementById('date').innerHTML = new Date().toDateString();
+document.getElementById('date').innerHTML = new Date().toDateString();
 
 panel_a = document.getElementById('panel_a_div');
 Plotly.plot( panel_a, [{
 x: [1, 2, 3, 4, 5],
 y: [1, 2, 4, 8, 16] }], {
-margin: { t: 40} } );
+margin: { t: 20, b: 40, l: 40, r: 20} } );
+
+panel_b = document.getElementById('panel_b_div');
+Plotly.plot( panel_b, [{
+x: [1, 2, 3, 4, 5],
+y: [1, 2, 4, 8, 16] }], {
+margin: { t: 20, b: 40, l: 40, r: 20} } );
+
+panel_c = document.getElementById('panel_c_div');
+Plotly.plot( panel_c, [{
+x: [1, 2, 3, 4, 5],
+y: [1, 2, 4, 8, 16] }], {
+margin: { t: 20, b: 40, l: 40, r: 20} } );
+
+panel_d = document.getElementById('panel_d_div');
+Plotly.plot( panel_d, [{
+x: [1, 2, 3, 4, 5],
+y: [1, 2, 4, 8, 16] }], {
+margin: { t: 20, b: 40, l: 40, r: 20} } );
 
 
 $.extend( $.ui.slider.prototype.options, { 
