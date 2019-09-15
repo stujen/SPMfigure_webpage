@@ -1,5 +1,12 @@
 // document.getElementById('date').innerHTML = new Date().toDateString();
 
+panel_a = document.getElementById('panel_a_div');
+Plotly.plot( panel_a, [{
+x: [1, 2, 3, 4, 5],
+y: [1, 2, 4, 8, 16] }], {
+margin: { t: 40} } );
+
+
 $.extend( $.ui.slider.prototype.options, { 
     animate: 300
 });

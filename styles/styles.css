@@ -52,6 +52,11 @@ h1 {
   cursor: default;
 }
 
+#panel_a_container {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
 #para_above_plot1 { color: #c7cdd5;
   text-align: left;
   padding: 0px 0px 0px;
