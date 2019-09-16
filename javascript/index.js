@@ -20,7 +20,8 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
         y: [],
         id: [],
         text: [],
-        marker: {color: []}
+        // color_val: [],
+        marker: {color: 'rbg(100,100,100)'}
       };
     }
     return trace;
@@ -34,7 +35,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
     trace.id.push(datum.scenario);
     trace.x.push(datum.year);
     trace.y.push(datum.temperature);
-    trace.color_val.push(datum.color_val)
+    // trace.color_val.push(datum.color_val)
     trace.marker.color = datum.color_val;
     // trace.marker.size.push(datum.pop);
   }
@@ -63,7 +64,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
       text: data.text.slice(),
       mode: 'lines',
       marker: {
-        color: data.color_val.slice(),
+        color: data.marker.color.slice(),
         // size: data.marker.size.slice(),
         // sizemode: 'area',
         // sizeref: 200000
