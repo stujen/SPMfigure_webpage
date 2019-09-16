@@ -1,17 +1,17 @@
 
-Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv', function (err, data) {
+Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master/data/temperature_responses_data.csv', function (err, data) {
   // Create a lookup table to sort and regroup the columns of data,
-  // first by year, then by continent:
+  // first by scenario, then by percentile:
   var lookup = {};
-  function getData(year, continent) {
-    var byYear, trace;
-    if (!(byYear = lookup[year])) {;
-      byYear = lookup[year] = {};
+  function getData(scenario, percentile) {
+    var byScen, trace;
+    if (!(byScen = lookup[scenario])) {;
+      byScen = lookup[scenario] = {};
     }
-     // If a container for this year + continent doesn't exist yet,
+     // If a container for this scenario + percentile doesn't exist yet,
      // then create one:
-    if (!(trace = byYear[continent])) {
-      trace = byYear[continent] = {
+    if (!(trace = byYear[percentile])) {
+      trace = byYear[[percentile]] = {
         x: [],
         y: [],
         id: [],
@@ -25,42 +25,42 @@ Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminde
   // Go through each row, get the right trace, and append the data:
   for (var i = 0; i < data.length; i++) {
     var datum = data[i];
-    var trace = getData(datum.year, datum.continent);
-    trace.text.push(datum.country);
-    trace.id.push(datum.country);
-    trace.x.push(datum.lifeExp);
-    trace.y.push(datum.gdpPercap);
-    trace.marker.size.push(datum.pop);
+    var trace = getData(datum.scenario, datum.percentile);
+    trace.text.push(datum.scenario);
+    trace.id.push(datum.scenario);
+    trace.x.push(datum.year);
+    trace.y.push(datum.temperature);
+    // trace.marker.size.push(datum.pop);
   }
 
   // Get the group names:
-  var years = Object.keys(lookup);
-  // In this case, every year includes every continent, so we
-  // can just infer the continents from the *first* year:
-  var firstYear = lookup[years[0]];
-  var continents = Object.keys(firstYear);
+  var scens = Object.keys(lookup);
+  // In this case, every year includes every percentile, so we
+  // can just infer the percentiles from the *first* year:
+  var firstScen = lookup[scens[0]];
+  var percentiles = Object.keys(firstScen);
 
-  // Create the main traces, one for each continent:
+  // Create the main traces, one for each percentile:
   var traces = [];
-  for (i = 0; i < continents.length; i++) {
-    var data = firstYear[continents[i]];
+  for (i = 0; i < percentiles.length; i++) {
+    var data = firstScen[percentiles[i]];
      // One small note. We're creating a single trace here, to which
      // the frames will pass data for the different years. It's
      // subtle, but to avoid data reference problems, we'll slice 
      // the arrays to ensure we never write any new data into our
      // lookup table:
     traces.push({
-      name: continents[i],
+      name: percentiles[i],
       x: data.x.slice(),
       y: data.y.slice(),
       id: data.id.slice(),
       text: data.text.slice(),
-      mode: 'markers',
-      marker: {
-        size: data.marker.size.slice(),
-        sizemode: 'area',
-        sizeref: 200000
-      }
+      mode: 'lines',
+      // marker: {
+      //   size: data.marker.size.slice(),
+      //   sizemode: 'area',
+      //   sizeref: 200000
+      // }
     });
   }
 
@@ -69,11 +69,11 @@ Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminde
   // definition (for example, appearance). The frames just need
   // the parts the traces that change (here, the data).
   var frames = [];
-  for (i = 0; i < years.length; i++) {
+  for (i = 0; i < scens.length; i++) {
     frames.push({
-      name: years[i],
-      data: continents.map(function (continent) {
-        return getData(years[i], continent);
+      name: scens[i],
+      data: percentiles.map(function (percentile) {
+        return getData(scens[i], percentile);
       })
     })
   }
@@ -83,11 +83,11 @@ Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminde
   // In this example, we'll animate to one of the named frames
   // created in the above loop.
   var sliderSteps = [];
-  for (i = 0; i < years.length; i++) {
+  for (i = 0; i < scens.length; i++) {
     sliderSteps.push({
       method: 'animate',
-      label: years[i],
-      args: [[years[i]], {
+      label: scens[i],
+      args: [[scens[i]], {
         mode: 'immediate',
         transition: {duration: 300},
         frame: {duration: 300, redraw: false},
@@ -97,12 +97,12 @@ Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminde
   
   var layout = {
     xaxis: {
-      title: 'Life Expectancy',
-      range: [30, 85]
+      title: 'Year',
+      range: [1765, 1785]
     },
     yaxis: {
-      title: 'GDP per Capita',
-      type: 'log'
+      title: 'Temperature',
+      range: [0.0, 0.05]
     },
     hovermode: 'closest',
      // We'll use updatemenus (whose functionality includes menus as
@@ -146,7 +146,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminde
       pad: {l: 130, t: 55},
       currentvalue: {
         visible: true,
-        prefix: 'Year:',
+        prefix: 'Scenario:',
         xanchor: 'right',
         font: {size: 20, color: '#666'}
       },
