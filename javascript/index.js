@@ -63,8 +63,10 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
       id: data.id.slice(),
       text: data.text.slice(),
       mode: 'lines',
+      type: 'scatter',
       marker: {
         color: data.marker.color.slice(),
+        size: 10,
         // size: data.marker.size.slice(),
         // sizemode: 'area',
         // sizeref: 200000
@@ -97,8 +99,8 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
       label: scens[i],
       args: [[scens[i]], {
         mode: 'immediate',
-        transition: {duration: 1000},
-        frame: {duration: 1000, redraw: false},
+        transition: {duration: 2000, easing: 'elastic-in'},
+        frame: {duration: 1000, redraw: true},
       }]
     });
   }
@@ -133,9 +135,9 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
         method: 'animate',
         args: [null, {
           mode: 'immediate',
-          fromcurrent: true,
-          transition: {duration: 1000},
-          frame: {duration: 1000, redraw: false}
+          fromcurrent: false,
+          transition: {duration: 2000, easing: 'elastic-in'},
+          frame: {duration: 1000, redraw: true}
         }],
         label: 'Play'
       }, {
