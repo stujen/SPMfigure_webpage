@@ -3,7 +3,7 @@ document.getElementById('date').innerHTML = new Date().toDateString();
 // plot the main panel (warming response)
 
 
-Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master/data/temps_hist.csv', function (err, data) {
+Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master/data/temps.csv', function (err, data) {
   // Create a lookup table to sort and regroup the columns of data,
   // first by scenario, then by percentile:
   var lookup = {};
