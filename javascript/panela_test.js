@@ -1,7 +1,5 @@
-document.getElementById('date').innerHTML = new Date().toDateString();
 
-// plot the main panel (warming response)
-Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master/data/gapminderDataFiveYear.csv', function (err, data) {
+Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv', function (err, data) {
   // Create a lookup table to sort and regroup the columns of data,
   // first by year, then by continent:
   var lookup = {};
@@ -165,83 +163,3 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
     margin: { t: 20, b: 40, l: 40, r: 20},
   });
 });
-
-
-
-
-
-
-
-
-
-// plot the annual co2 emissions panel
-panel_b = document.getElementById('panel_b_div');
-Plotly.plot( panel_b, [{
-x: [1, 2, 3, 4, 5],
-y: [1, 2, 4, 8, 16] }], {
-margin: { t: 20, b: 40, l: 40, r: 20} } );
-
-// plot the cumulative co2 emissions panel
-panel_c = document.getElementById('panel_c_div');
-Plotly.plot( panel_c, [{
-x: [1, 2, 3, 4, 5],
-y: [1, 2, 4, 8, 16] }], {
-margin: { t: 20, b: 40, l: 40, r: 20} } );
-
-// plot the non-CO2 RF panel
-panel_d = document.getElementById('panel_d_div');
-Plotly.plot( panel_d, [{
-x: [1, 2, 3, 4, 5],
-y: [1, 2, 4, 8, 16] }], {
-margin: { t: 20, b: 40, l: 40, r: 20} } );
-
-
-$.extend( $.ui.slider.prototype.options, { 
-    animate: 300
-});
-
-$("#flat-slider")
-    .slider({
-        max: 50,
-        min: 0,
-        range: true,
-        values: [15, 35]
-    })
-    .slider("pips", {
-        first: "pip",
-        last: "pip"
-    });
-
-$("#flat-slider-vertical-1")
-    .slider({
-        max: 25,
-        min: 0,
-        range: "min",
-        value: 25,
-        orientation: "vertical"
-    });
-
-    $("#flat-slider-vertical-2")
-    .slider({
-        max: 25,
-        min: 0,
-        range: "max",
-        value: 12,
-        orientation: "vertical"
-    });
-
-$("#flat-slider-vertical-3")
-    .slider({
-        max: 25,
-        min: 0,
-        range: "min",
-        value: 0,
-        orientation: "vertical"
-    });
-
-    $("#flat-slider-vertical-1, #flat-slider-vertical-2, #flat-slider-vertical-3")
-    .slider("pips", {
-        first: "pip",
-        last: "pip"
-    })
-    .slider("float");
