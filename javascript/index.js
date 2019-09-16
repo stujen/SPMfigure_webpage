@@ -20,7 +20,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
         y: [],
         id: [],
         text: [],
-        marker: {size: []}
+        marker: {color: []}
       };
     }
     return trace;
@@ -34,6 +34,8 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
     trace.id.push(datum.scenario);
     trace.x.push(datum.year);
     trace.y.push(datum.temperature);
+    trace.color_val.push(datum.color_val)
+    trace.marker.color = datum.color_val;
     // trace.marker.size.push(datum.pop);
   }
 
@@ -60,11 +62,12 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
       id: data.id.slice(),
       text: data.text.slice(),
       mode: 'lines',
-      // marker: {
-      //   size: data.marker.size.slice(),
-      //   sizemode: 'area',
-      //   sizeref: 200000
-      // }
+      marker: {
+        color: data.color_val.slice(),
+        // size: data.marker.size.slice(),
+        // sizemode: 'area',
+        // sizeref: 200000
+      }
     });
   }
 
@@ -93,8 +96,8 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
       label: scens[i],
       args: [[scens[i]], {
         mode: 'immediate',
-        transition: {duration: 300},
-        frame: {duration: 300, redraw: false},
+        transition: {duration: 1000},
+        frame: {duration: 1000, redraw: false},
       }]
     });
   }
@@ -106,7 +109,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
     },
     yaxis: {
       title: 'Temperature',
-      range: [0.0, 2.1]
+      range: [0.0, 2.05]
     },
     hovermode: 'closest',
      // We'll use updatemenus (whose functionality includes menus as
@@ -130,8 +133,8 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
         args: [null, {
           mode: 'immediate',
           fromcurrent: true,
-          transition: {duration: 300},
-          frame: {duration: 500, redraw: false}
+          transition: {duration: 1000},
+          frame: {duration: 1000, redraw: false}
         }],
         label: 'Play'
       }, {
@@ -162,7 +165,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
   Plotly.plot('panel_a_div', {
     data: traces,
     layout: layout,
-     config: {showSendToCloud:true},
+     config: {showSendToCloud:false},
     frames: frames,
     margin: { t: 20, b: 40, l: 40, r: 20},
   });
