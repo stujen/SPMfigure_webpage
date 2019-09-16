@@ -102,11 +102,11 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
   var layout = {
     xaxis: {
       title: 'Year',
-      range: [1765, 1785]
+      range: [1960, 2100]
     },
     yaxis: {
       title: 'Temperature',
-      range: [0.0, 0.05]
+      range: [0.0, 2.1]
     },
     hovermode: 'closest',
      // We'll use updatemenus (whose functionality includes menus as
