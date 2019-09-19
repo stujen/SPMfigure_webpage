@@ -100,7 +100,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
       args: [[scens[i]], {
         mode: 'immediate',
         fromcurrent: true,
-        transition: {duration: 10000, easing: 'elastic'},
+        transition: {duration: 10000, easing: 'linear'},
         frame: {duration: 1000, redraw: true},
       }]
     });
