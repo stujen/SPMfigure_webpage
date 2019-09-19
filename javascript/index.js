@@ -3,7 +3,7 @@ document.getElementById('date').innerHTML = new Date().toDateString();
 // plot the main panel (warming response)
 
 
-Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master/data/temps.csv', function (err, data) {
+Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master/data/temps_annual.csv', function (err, data) {
   // Create a lookup table to sort and regroup the columns of data,
   // first by scenario, then by percentile:
   var lookup = {};
@@ -99,7 +99,8 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
       label: scens[i],
       args: [[scens[i]], {
         mode: 'immediate',
-        transition: {duration: 2000, easing: 'elastic-in'},
+        fromcurrent: true,
+        transition: {duration: 10000, easing: 'elastic'},
         frame: {duration: 1000, redraw: true},
       }]
     });
@@ -122,34 +123,36 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
      // passing `[null]`, which indicates we'd like to interrupt any
      // currently running animations with a new list of frames. Here
      // The new list of frames is empty, so it halts the animation.
-    updatemenus: [{
-      x: 0,
-      y: 0,
-      yanchor: 'top',
-      xanchor: 'left',
-      showactive: false,
-      direction: 'left',
-      type: 'buttons',
-      pad: {t: 87, r: 10},
-      buttons: [{
-        method: 'animate',
-        args: [null, {
-          mode: 'immediate',
-          fromcurrent: false,
-          transition: {duration: 2000, easing: 'elastic-in'},
-          frame: {duration: 1000, redraw: true}
-        }],
-        label: 'Play'
-      }, {
-        method: 'animate',
-        args: [[null], {
-          mode: 'immediate',
-          transition: {duration: 0},
-          frame: {duration: 0, redraw: false}
-        }],
-        label: 'Pause'
-      }]
-    }],
+
+    // updatemenus: [{
+    //   x: 0,
+    //   y: 0,
+    //   yanchor: 'top',
+    //   xanchor: 'left',
+    //   showactive: false,
+    //   direction: 'left',
+    //   type: 'buttons',
+    //   pad: {t: 87, r: 10},
+    //   // buttons: [{
+    //   //   method: 'animate',
+    //   //   args: [null, {
+    //   //     mode: 'immediate',
+    //   //     fromcurrent: true,
+    //   //     transition: {duration: 10000, easing: 'elastic'},
+    //   //     frame: {duration: 5000, redraw: true}
+    //   //   }],
+    //   //   label: 'Play'
+    //   // }, {
+    //   //   method: 'animate',
+    //   //   args: [[null], {
+    //   //     mode: 'immediate',
+    //   //     transition: {duration: 0},
+    //   //     frame: {duration: 0, redraw: false}
+    //   //   }],
+    //   //   label: 'Pause'
+    //   // }]
+    // }],
+    
      // Finally, add the slider and use `pad` to position it
      // nicely next to the buttons.
     sliders: [{
