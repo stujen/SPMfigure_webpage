@@ -79,11 +79,11 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
         color: data.marker.color.slice(),
         size: 10,
       },
-      name: 'a)',
+      xaxis: 'x1',
+      yaxis: 'y1'
     });
 
     traces.push({
-      name: percentiles[i],
       mode: 'lines',
       type: 'scatter',
       marker: {
@@ -93,12 +93,10 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
       x: data.x_b.slice(),
       y: data.y_b.slice(),
       xaxis: 'x2',
-      yaxis: 'y2',
-      name: 'b)',
+      yaxis: 'y2'
     });
 
     traces.push({
-      name: percentiles[i],
       mode: 'lines',
       type: 'scatter',
       marker: {
@@ -108,12 +106,10 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
       x: data.x_c.slice(),
       y: data.y_c.slice(),
       xaxis: 'x3',
-      yaxis: 'y3',
-      name: 'c)',
+      yaxis: 'y3'
     });
 
     traces.push({
-      name: percentiles[i],
       mode: 'lines',
       type: 'scatter',
       marker: {
@@ -123,8 +119,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
       x: data.x_d.slice(),
       y: data.y_d.slice(),
       xaxis: 'x4',
-      yaxis: 'y4',
-      name: 'd)',
+      yaxis: 'y4'
     });
   }
 
@@ -163,7 +158,6 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
   var layout = {
     xaxis: {
       domain: [0,1],
-      title: 'Year',
       range: [1960, 2100],
       anchor: 'y1'
     },
@@ -182,7 +176,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
     yaxis2: {
       domain: [0, 0.45],
       title: 'Annual emissions',
-      range: [0, 70],
+      range: [0, 20],
       anchor: 'x2'
     },
     xaxis3: {
@@ -194,7 +188,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
     yaxis3: {
       domain: [0, 0.45],
       title: 'Cumulative emissions',
-      range: [500, 4000],
+      range: [0, 200],
       anchor: 'x3'
     },
     xaxis4: {
@@ -206,7 +200,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
     yaxis4: {
       domain: [0, 0.45],
       title: 'Radiative forcing',
-      range: [0, 2],
+      range: [0, 2.01],
       anchor: 'x4'
     },
     hovermode: 'closest',
@@ -271,72 +265,72 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
   });
 });
 
-var trace1 = {
-  x: [1, 2],
-  y: [1, 2],
-  type: 'scatter',
-  name: '(1,1)'
-};
-var trace2 = {
-  x: [1, 2],
-  y: [1, 2],
-  type: 'scatter',
-  name: '(1,2)',
-  xaxis: 'x2',
-  yaxis: 'y2'
-};
-var trace3 = {
-  x: [1, 2],
-  y: [1, 2],
-  type: 'scatter',
-  name: '(1,2)',
-  xaxis: 'x3',
-  yaxis: 'y3'
-};
-var trace4 = {
-  x: [1, 2],
-  y: [1, 2],
-  type: 'scatter',
-  name: '(1,2)',
-  xaxis: 'x4',
-  yaxis: 'y4'
-};
-var data = [trace1, trace2, trace3, trace4];
-var layout = {
-  title: 'Mulitple Custom Sized Subplots',
-  xaxis: {
-    domain: [0, 0.45],
-    anchor: 'y1'
-  },
-  yaxis: {
-    domain: [0.5, 1],
-    anchor: 'x1'
-  },
-  xaxis2: {
-    domain: [0.55, 1],
-    anchor: 'y2'
-  },
-  yaxis2: {
-    domain: [0.8, 1],
-    anchor: 'x2'
-  },
-  xaxis3: {
-    domain: [0.55, 1],
-    anchor: 'y3'
-  },
-  yaxis3: {
-    domain: [0.5, 0.75],
-    anchor: 'x3'
-  },
-  xaxis4: {
-    domain: [0, 1],
-    anchor: 'y4'
-  },
-  yaxis4: {
-    domain: [0, 0.45],
-    anchor: 'x4'
-  }
-};
+// var trace1 = {
+//   x: [1, 2],
+//   y: [1, 2],
+//   type: 'scatter',
+//   name: '(1,1)'
+// };
+// var trace2 = {
+//   x: [1, 2],
+//   y: [1, 2],
+//   type: 'scatter',
+//   name: '(1,2)',
+//   xaxis: 'x2',
+//   yaxis: 'y2'
+// };
+// var trace3 = {
+//   x: [1, 2],
+//   y: [1, 2],
+//   type: 'scatter',
+//   name: '(1,2)',
+//   xaxis: 'x3',
+//   yaxis: 'y3'
+// };
+// var trace4 = {
+//   x: [1, 2],
+//   y: [1, 2],
+//   type: 'scatter',
+//   name: '(1,2)',
+//   xaxis: 'x4',
+//   yaxis: 'y4'
+// };
+// var data = [trace1, trace2, trace3, trace4];
+// var layout = {
+//   title: 'Mulitple Custom Sized Subplots',
+//   xaxis: {
+//     domain: [0, 0.45],
+//     anchor: 'y1'
+//   },
+//   yaxis: {
+//     domain: [0.5, 1],
+//     anchor: 'x1'
+//   },
+//   xaxis2: {
+//     domain: [0.55, 1],
+//     anchor: 'y2'
+//   },
+//   yaxis2: {
+//     domain: [0.8, 1],
+//     anchor: 'x2'
+//   },
+//   xaxis3: {
+//     domain: [0.55, 1],
+//     anchor: 'y3'
+//   },
+//   yaxis3: {
+//     domain: [0.5, 0.75],
+//     anchor: 'x3'
+//   },
+//   xaxis4: {
+//     domain: [0, 1],
+//     anchor: 'y4'
+//   },
+//   yaxis4: {
+//     domain: [0, 0.45],
+//     anchor: 'x4'
+//   }
+// };
 
 
 // test panel a with GDP vs life expectancy data
@@ -509,25 +503,25 @@ var layout = {
 
 
 // plot the annual co2 emissions panel
-panel_b = document.getElementById('panel_b_div');
-Plotly.plot( panel_b, [{
-x: [1, 2, 3, 4, 5],
-y: [1, 2, 4, 8, 16] }], {
-margin: { t: 20, b: 40, l: 40, r: 20} } );
+// panel_b = document.getElementById('panel_b_div');
+// Plotly.plot( panel_b, [{
+// x: [1, 2, 3, 4, 5],
+// y: [1, 2, 4, 8, 16] }], {
+// margin: { t: 20, b: 40, l: 40, r: 20} } );
 
-// plot the cumulative co2 emissions panel
-panel_c = document.getElementById('panel_c_div');
-Plotly.plot( panel_c, [{
-x: [1, 2, 3, 4, 5],
-y: [1, 2, 4, 8, 16] }], {
-margin: { t: 20, b: 40, l: 40, r: 20} } );
+// // plot the cumulative co2 emissions panel
+// panel_c = document.getElementById('panel_c_div');
+// Plotly.plot( panel_c, [{
+// x: [1, 2, 3, 4, 5],
+// y: [1, 2, 4, 8, 16] }], {
+// margin: { t: 20, b: 40, l: 40, r: 20} } );
 
-// plot the non-CO2 RF panel
-panel_d = document.getElementById('panel_d_div');
-Plotly.plot( panel_d, [{
-x: [1, 2, 3, 4, 5],
-y: [1, 2, 4, 8, 16] }], {
-margin: { t: 20, b: 40, l: 40, r: 20} } );
+// // plot the non-CO2 RF panel
+// panel_d = document.getElementById('panel_d_div');
+// Plotly.plot( panel_d, [{
+// x: [1, 2, 3, 4, 5],
+// y: [1, 2, 4, 8, 16] }], {
+// margin: { t: 20, b: 40, l: 40, r: 20} } );
 
 
 $.extend( $.ui.slider.prototype.options, { 
