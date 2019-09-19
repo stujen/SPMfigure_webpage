@@ -20,8 +20,13 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
         y: [],
         id: [],
         text: [],
-        // color_val: [],
-        marker: {color: 'rbg(100,100,100)'}
+        marker: {color: 'rbg(100,100,100)'},
+        x_b: [],
+        y_b: [],
+        x_c: [],
+        y_c: [],
+        x_d: [],
+        y_d: []
       };
     }
     return trace;
@@ -38,6 +43,12 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
     // trace.color_val.push(datum.color_val)
     trace.marker.color = datum.color_val;
     // trace.marker.size.push(datum.pop);
+    trace.x_b.push(datum.year);
+    trace.y_b.push(datum.annual_ems);
+    trace.x_c.push(datum.year);
+    trace.y_c.push(datum.cum_ems);
+    trace.x_d.push(datum.year);
+    trace.y_d.push(datum.nonCO2_RF);
   }
 
   // Get the group names:
@@ -67,10 +78,53 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
       marker: {
         color: data.marker.color.slice(),
         size: 10,
-        // size: data.marker.size.slice(),
-        // sizemode: 'area',
-        // sizeref: 200000
-      }
+      },
+      name: 'a)',
+    });
+
+    traces.push({
+      name: percentiles[i],
+      mode: 'lines',
+      type: 'scatter',
+      marker: {
+        color: data.marker.color.slice(),
+        size: 10,
+      },
+      x_b: data.x_b.slice(),
+      y_b: data.y_b.slice(),
+      xaxis: 'x2',
+      yaxis: 'y2',
+      name: 'b)',
+    });
+
+    traces.push({
+      name: percentiles[i],
+      mode: 'lines',
+      type: 'scatter',
+      marker: {
+        color: data.marker.color.slice(),
+        size: 10,
+      },
+      x_c: data.x_c.slice(),
+      y_c: data.y_c.slice(),
+      xaxis: 'x3',
+      yaxis: 'y3',
+      name: 'c)',
+    });
+
+    traces.push({
+      name: percentiles[i],
+      mode: 'lines',
+      type: 'scatter',
+      marker: {
+        color: data.marker.color.slice(),
+        size: 10,
+      },
+      x_d: data.x_d.slice(),
+      y_d: data.y_d.slice(),
+      xaxis: 'x4',
+      yaxis: 'y4',
+      name: 'd)',
     });
   }
 
@@ -108,12 +162,52 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
   
   var layout = {
     xaxis: {
+      domain: [0,1],
       title: 'Year',
-      range: [1960, 2100]
+      range: [1960, 2100],
+      anchor: 'y1'
     },
     yaxis: {
+      domain: [0.55,1],
       title: 'Temperature',
-      range: [0.0, 2.05]
+      range: [0.0, 2.05],
+      anchor: 'x1'
+    },
+    xaxis2: {
+      domain: [0, 0.3],
+      title: 'Year',
+      range: [1960, 2100],
+      anchor: 'y2'
+    },
+    yaxis2: {
+      domain: [0, 0.45],
+      title: 'Annual emissions',
+      range: [0, 70],
+      anchor: 'x2'
+    },
+    xaxis3: {
+      domain: [0.35, 0.65],
+      title: 'Year',
+      range: [1960, 2100],
+      anchor: 'y3'
+    },
+    yaxis3: {
+      domain: [0, 0.45],
+      title: 'Cumulative emissions',
+      range: [500, 4000],
+      anchor: 'x3'
+    },
+    xaxis4: {
+      domain: [0.7, 1],
+      title: 'Year',
+      range: [1960, 2100],
+      anchor: 'y4'
+    },
+    yaxis4: {
+      domain: [0, 0.45],
+      title: 'Radiative forcing',
+      range: [0, 2],
+      anchor: 'x4'
     },
     hovermode: 'closest',
      // We'll use updatemenus (whose functionality includes menus as
@@ -176,6 +270,73 @@ Plotly.d3.csv('https://raw.githubusercontent.com/stujen/SPMFigure_webpage/master
     margin: { t: 20, b: 40, l: 40, r: 20},
   });
 });
+
+var trace1 = {
+  x: [1, 2],
+  y: [1, 2],
+  type: 'scatter',
+  name: '(1,1)'
+};
+var trace2 = {
+  x: [1, 2],
+  y: [1, 2],
+  type: 'scatter',
+  name: '(1,2)',
+  xaxis: 'x2',
+  yaxis: 'y2'
+};
+var trace3 = {
+  x: [1, 2],
+  y: [1, 2],
+  type: 'scatter',
+  name: '(1,2)',
+  xaxis: 'x3',
+  yaxis: 'y3'
+};
+var trace4 = {
+  x: [1, 2],
+  y: [1, 2],
+  type: 'scatter',
+  name: '(1,2)',
+  xaxis: 'x4',
+  yaxis: 'y4'
+};
+var data = [trace1, trace2, trace3, trace4];
+var layout = {
+  title: 'Mulitple Custom Sized Subplots',
+  xaxis: {
+    domain: [0, 0.45],
+    anchor: 'y1'
+  },
+  yaxis: {
+    domain: [0.5, 1],
+    anchor: 'x1'
+  },
+  xaxis2: {
+    domain: [0.55, 1],
+    anchor: 'y2'
+  },
+  yaxis2: {
+    domain: [0.8, 1],
+    anchor: 'x2'
+  },
+  xaxis3: {
+    domain: [0.55, 1],
+    anchor: 'y3'
+  },
+  yaxis3: {
+    domain: [0.5, 0.75],
+    anchor: 'x3'
+  },
+  xaxis4: {
+    domain: [0, 1],
+    anchor: 'y4'
+  },
+  yaxis4: {
+    domain: [0, 0.45],
+    anchor: 'x4'
+  }
+};
 
 
 // test panel a with GDP vs life expectancy data
