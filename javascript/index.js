@@ -128,7 +128,7 @@ var defTraces = [{
   line: {color: 'black'},
   xaxis: 'x2',
   yaxis: 'y2',
-  name: 'CO2',
+  name: 'CO<sub>2</sub>',
 }, 
 
 // grey future annual CO2 emissions
@@ -139,7 +139,7 @@ var defTraces = [{
   line: {color: 'grey'},
   xaxis: 'x2',
   yaxis: 'y2',
-  name: 'CO2',
+  name: 'CO<sub>2</sub>',
   opacity: 0.2,
   hoverinfo: 'none',
 }, 
@@ -152,7 +152,7 @@ var defTraces = [{
   line: {color: 'blue'},
   xaxis: 'x2',
   yaxis: 'y2',
-  name: 'CO2',
+  name: 'CO<sub>2</sub>',
   opacity: 0.2,
   hoverinfo: 'none',
 },
@@ -165,7 +165,7 @@ var defTraces = [{
   line: {color: 'purple'},
   xaxis: 'x2',
   yaxis: 'y2',
-  name: 'CO2',
+  name: 'CO<sub>2</sub>',
   opacity: 0.2,
   hoverinfo: 'none',
 },
@@ -179,7 +179,7 @@ var defTraces = [{
   line: {color: 'black'},
   xaxis: 'x3',
   yaxis: 'y3',
-  name: 'CO2',
+  name: 'CO<sub>2</sub>',
 }, 
 
 // grey future cumulative CO2 emissions
@@ -190,7 +190,7 @@ var defTraces = [{
   line: {color: 'grey'},
   xaxis: 'x3',
   yaxis: 'y3',
-  name: 'CO2',
+  name: 'CO<sub>2</sub>',
   opacity: 0.2,
   hoverinfo: 'none',
 }, 
@@ -203,7 +203,7 @@ var defTraces = [{
   line: {color: 'blue'},
   xaxis: 'x3',
   yaxis: 'y3',
-  name: 'CO2',
+  name: 'CO<sub>2</sub>',
   opacity: 0.2,
   hoverinfo: 'none',
 },
@@ -216,7 +216,7 @@ var defTraces = [{
   line: {color: 'purple'},
   xaxis: 'x3',
   yaxis: 'y3',
-  name: 'CO2',
+  name: 'CO<sub>2</sub>',
   opacity: 0.2,
   hoverinfo: 'none',
 },
@@ -230,7 +230,7 @@ var defTraces = [{
   line: {color: 'black'},
   xaxis: 'x4',
   yaxis: 'y4',
-  name: 'non-CO2 RF',
+  name: 'non-CO<sub>2</sub> RF',
 }, 
 
 // grey future non-CO2 radiative forcing
@@ -241,7 +241,7 @@ var defTraces = [{
   line: {color: 'grey'},
   xaxis: 'x4',
   yaxis: 'y4',
-  name: 'non-CO2 RF',
+  name: 'non-CO<sub>2</sub> RF',
   opacity: 0.2,
   hoverinfo: 'none',
 }, 
@@ -254,7 +254,7 @@ var defTraces = [{
   line: {color: 'blue'},
   xaxis: 'x4',
   yaxis: 'y4',
-  name: 'non-CO2 RF',
+  name: 'non-CO<sub>2</sub> RF',
   opacity: 0.2,
   hoverinfo: 'none',
 }, 
@@ -267,7 +267,7 @@ var defTraces = [{
   line: {color: 'purple'},
   xaxis: 'x4',
   yaxis: 'y4',
-  name: 'non-CO2 RF',
+  name: 'non-CO<sub>2</sub> RF',
   opacity: 0.2,
   hoverinfo: 'none',
 },
@@ -355,12 +355,43 @@ var defTraces = [{
   line: {color: 'black'},
   name: '83th %-ile',
   fill: 'tonexty'
+},
+
+
+
+// annual CO2 slider1 result (34)
+{
+  x: [2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100],
+  y: [1.263,1.292,1.322,1.354,1.386,1.42,1.453,1.487,1.52,1.552,1.584,1.614,1.644,1.672,1.697,1.722,1.745,1.767,1.787,1.805,1.822,1.838,1.853,1.866,1.877,1.888,1.897,1.906,1.913,1.919,1.923,1.927,1.931,1.933,1.935,1.935,1.934,1.932,1.929,1.926,1.922,1.918,1.914,1.909,1.904,1.899,1.894,1.889,1.883,1.878,1.873,1.867,1.861,1.855,1.849,1.843,1.838,1.832,1.828,1.823,1.818,1.813,1.809,1.805,1.801,1.797,1.794,1.791,1.788,1.784,1.781,1.778,1.775,1.771,1.768,1.765,1.762,1.759,1.756,1.753,1.75,1.747,1.744],
+  visible: false,
+  line: {color: 'red'},
+  name: 'test'
+},
+
+// non-CO2 RF slider2 result (35)
+{
+  x: [2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100],
+  y: [1.263,1.292,1.322,1.354,1.386,1.42,1.453,1.487,1.52,1.552,1.584,1.614,1.644,1.672,1.697,1.722,1.745,1.767,1.787,1.805,1.822,1.838,1.853,1.866,1.877,1.888,1.897,1.906,1.913,1.919,1.923,1.927,1.931,1.933,1.935,1.935,1.934,1.932,1.929,1.926,1.922,1.918,1.914,1.909,1.904,1.899,1.894,1.889,1.883,1.878,1.873,1.867,1.861,1.855,1.849,1.843,1.838,1.832,1.828,1.823,1.818,1.813,1.809,1.805,1.801,1.797,1.794,1.791,1.788,1.784,1.781,1.778,1.775,1.771,1.768,1.765,1.762,1.759,1.756,1.753,1.75,1.747,1.744],
+  visible: false,
+  line: {color: 'green'},
+  name: 'test2'
+},
+
+// 8cumulative CO2 slider 1 result (36)
+{
+  x: [2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100],
+  y: [1.263,1.292,1.322,1.354,1.386,1.42,1.453,1.487,1.52,1.552,1.584,1.614,1.644,1.672,1.697,1.722,1.745,1.767,1.787,1.805,1.822,1.838,1.853,1.866,1.877,1.888,1.897,1.906,1.913,1.919,1.923,1.927,1.931,1.933,1.935,1.935,1.934,1.932,1.929,1.926,1.922,1.918,1.914,1.909,1.904,1.899,1.894,1.889,1.883,1.878,1.873,1.867,1.861,1.855,1.849,1.843,1.838,1.832,1.828,1.823,1.818,1.813,1.809,1.805,1.801,1.797,1.794,1.791,1.788,1.784,1.781,1.778,1.775,1.771,1.768,1.765,1.762,1.759,1.756,1.753,1.75,1.747,1.744],
+  visible: true,
+  line: {color: 'black'},
+  name: '83th %-ile',
+  fill: 'tonexty'
 }];
 
 var layout = {
   margin: {t: 40, b: 60, l: 60, r: 40},
   showlegend: false,
   xaxis: {
+    fixedrange: true,
     showgrid: false,
     domain: [0,1],
     range: [1960, 2100],
@@ -370,6 +401,7 @@ var layout = {
     tickfont: {size: 12},
   },
   yaxis: {
+    fixedrange: true,
     showline: true,
     domain: [0.55,1],
     range: [0, 2.05],
@@ -379,6 +411,7 @@ var layout = {
     tickfont: {size: 12},
   },
   xaxis2: {
+    fixedrange: true,
     domain: [0,0.3],
     showgrid: false,
     range: [1960, 2100],
@@ -388,16 +421,18 @@ var layout = {
     tickfont: {size: 12},
   },
   yaxis2: {
+    fixedrange: true,
     domain: [0,0.45],
     showline: true,
     showgrid: false,
     range: [0, 60],
     anchor: 'x2',
-    title: 'Annual emissions (GtCO2/yr)',
+    title: 'Annual emissions (GtCO<sub>2</sub>/yr)',
     titlefont: {size: 12},
     tickfont: {size: 12},
   },
   xaxis3: {
+    fixedrange: true,
     domain: [0.35,0.65],
     showgrid: false,
     range: [1960, 2100],
@@ -407,16 +442,18 @@ var layout = {
     tickfont: {size: 12},
   },
   yaxis3: {
+    fixedrange: true,
     domain: [0,0.45],
     showline: true,
     showgrid: false,
-    range: [0, 3],
+    range: [0, 3.5],
     anchor: 'x3',
-    title: 'Cumulative emissions (GtCO2)',
+    title: 'Cumulative emissions (TtCO<sub>2</sub>)',
     titlefont: {size: 12},
     tickfont: {size: 12},
   },
   xaxis4: {
+    fixedrange: true,
     domain: [0.7,1],
     showgrid: false,
     range: [1960, 2100],
@@ -426,51 +463,16 @@ var layout = {
     tickfont: {size: 12},
   },
   yaxis4: {
+    fixedrange: true,
     domain: [0,0.45],
     showline: true,
     showgrid: false,
-    range: [0, 2],
+    range: [0, 3.5],
     anchor: 'x4',
-    title: 'non-CO2 RF (W/m2)',
+    title: 'non-CO<sub>2</sub> RF (W/m<sup>2</sup>)',
     titlefont: {size: 12},
     tickfont: {size: 12},
   },
-  // sliders: [{
-  //   pad: {
-  //     t: 30
-  //   },
-  //   currentvalue: {
-  //     visible: false,
-  //   },
-  //   steps: [{
-  //     label: 'grey',
-  //     method: 'restyle',
-  //     // args: ['visible', [true, true, true, true, true, true, true, false, false, false, false, false, false, true, true, false, false, true, true, false, false, true, true, false, false]]
-  //     args: ['visible', [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, true, true, false, false, true, true, false, false, true], {
-  //       mode: 'immediate',
-  //       transition: {duration: 300},
-  //       frame: {duration: 300, redraw: true},
-  //     }]
-  //   }, 
-  //   {
-  //     label: 'blue',
-  //     method: 'restyle',
-  //     args: ['visible', [true, true, true, true, false, false, false, true, true, true, false, false, false, true, false, true, false, true, false, true, false, true, false, true, false, true], {
-  //       mode: 'immediate',
-  //       transition: {duration: 300},
-  //       frame: {duration: 300, redraw: true},
-  //     }]
-  //   }, 
-  //   {
-  //     label: 'purple',
-  //     method: 'restyle',
-  //     args: ['visible', [true, true, true, true, false, false, false, false, false, false, true, true, true, true, false, false, true, true, false, false, true, true, false, false, true, true], {
-  //       mode: 'immediate',
-  //       transition: {duration: 300},
-  //       frame: {duration: 300, redraw: true},
-  //     }]
-  //   }]
-  // }]
 };
 
 const traces = [];
