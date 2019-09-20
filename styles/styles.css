@@ -34,7 +34,7 @@ h1 {
 
 #panel_a_container {
   text-align: center;
-  padding-bottom: 20px;
+  /*padding-bottom: 20px;*/
 }
 
 #panel_bcd_container {
@@ -64,9 +64,13 @@ h1 {
 
 #below_stuff { color: #c7cdd5;
   text-align: center;
-  padding: 100px 0px 0px;
+  padding: 50px 0px 0px;
   font-weight: 300;
   font-size: 1.3em;
+}
+
+#finalstuff {
+  padding-bottom: 20px;
 }
 
 .other { color: #c7cdd5;
