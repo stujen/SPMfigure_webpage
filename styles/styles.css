@@ -22,7 +22,7 @@ body {
 
 h1 {
   color: #7e8c9f;
-  padding: 0px 20px 0px;
+  padding: 20px 20px 0px;
   margin: 0;
   font-weight: 300;
   -webkit-user-select: none;
@@ -57,9 +57,9 @@ h1 {
 
 #figure_header { color: #c7cdd5;
   text-align: left;
-  padding: 0px 0px 0px;
-  font-weight: 300;
-  font-size: 2em;
+  padding: 40px 0px 0px;
+  font-weight: 200;
+  font-size: 1.5em;
 }
 
 #below_stuff { color: #c7cdd5;
@@ -77,7 +77,15 @@ h1 {
 }
 
 .other2 { color: #c7cdd5;
+  float:left;
   text-align: left;
+  padding: 0px 82px 0px;
+  font-weight: 200;
+  font-size: 1em;
+}
+.other3 { color: #c7cdd5;
+  float:right;
+  text-align: right;
   padding: 0px 82px 0px;
   font-weight: 200;
   font-size: 1em;
