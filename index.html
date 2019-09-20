@@ -20,21 +20,40 @@
     <p id='para_above_plot2'>Here we present an interactive version of figure 1 in the Summary for Policymakers document. Figure 1 acts as a summary for the material discussed in Chapter 1 of the main report - including key definitions of terms such as global warming, the pre-industrial period, and the human contribution to warming to date. We present an interactive version of the figure so users can understand how decisions they make at a national and global policy level impact the likely outcomes of us remaining below 1.5℃.</p>
 
     <main>
-    	<h2 id='figure_header'>SPM Figure 1</h2>
+        <!-- <div class="slider_wrapper"> -->
+            <!-- <p class="other">Year of net-zero CO2 emissions choice</p> -->
+            <p class='other'>Choose year of net-zero CO2 emissions and value of 2100 non-CO2 RF using sliders below: </p>
+            <div class="slider_wrapper">
+                <input type="range" min="2030" max="2100" value="2055" class="slider" id="myRange">
+            <!-- <p>Year of net-zero: <span id="demo"></span></p> -->
+            </div>
+<!--         </div> -->
+
+        <!-- <div><p>Year of net-zero: <span id="demo"></span></p></div> -->
+<!-- 
+        <div class="slider_wrapper">
+            <p class="other">2100 non-CO2 RF choice</p> -->
+            <div class="slider_wrapper">
+                <input type="range" min="0" max="150" value="50" class="slider" id="myRange2">
+            </div>
+            <p class="other2">Year of net-zero: <span id="demo"></span>            2100 non-CO2 RF: <span id="demo2"></span></p>
+        <!-- </div> -->
+
+    	<h2 id='figure_header'>IPCC SR15 SPM Figure 1</h2>
     	<div id='panel_a_container'>
-    		<div id="panel_a_div" style="width:900px;height:800px;display:inline-block;"></div>
+    		<div id="panel_a_div" style="width:900px;height:600px;display:inline-block;"></div>
     	</div>
 
-    	<div id='panel_bcd_container'>
+<!--     	<div id='panel_bcd_container'>
     		<div id="panel_b_div" style="width:297px;height:250px;display:inline-block;"></div>
     		<div id="panel_c_div" style="width:297px;height:250px;display:inline-block;"></div>
     		<div id="panel_d_div" style="width:297px;height:250px;display:inline-block;"></div>
-    	</div>
+    	</div> -->
 
-        <div id="flat-slider"></div>
+<!--         <div id="flat-slider"></div>
         <div id="flat-slider-vertical-1"></div>
         <div id="flat-slider-vertical-2"></div>
-        <div id="flat-slider-vertical-3"></div>
+        <div id="flat-slider-vertical-3"></div> -->
     </main>
 
     <p id='below_stuff'>For further information see: <a href="https://www.ipcc.ch/sr15/" target="_blank">https://www.ipcc.ch/sr15/</a></p>
