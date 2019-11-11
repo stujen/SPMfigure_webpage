@@ -198,22 +198,33 @@ for (var i = 0; i <= years.length-1; i++) {
 
 
 
+function def_otherRF(RF_central, rf_2100_val, RF_middle_original) {
 
-function def_otherRF(RF_central, rf_2100_val) {
+  var RF_2030_fixed_central = Array(2101-1765).fill(0.0);
+  var RF_2030_fixed_original = Array(2101-1765).fill(0.0);
+  for (var i = 2031-1765; i <= RF_2030_fixed_central.length - 1; i++) {
+    RF_2030_fixed_central[i] = RF_central[2030-1765];
+    RF_2030_fixed_original[i] = RF_middle_original[2030-1765];
+  };
 
   for (var i = 2031; i <= 2100; i++) {
 
-    // RF_central[i-1765] = RF_central[i-1765] * (rf_2100_val-0.315+RF_central[2030-1765])*(i-2030)/((2100-2030)*RF_central[2100-1765]) + RF_central[i-1765] * (1-(i-2030)/(2100-2030));
+    // RF_central[i-1765] = RF_central[i-1765]*(2100-i)/(2100-2030) + (rf_2100_val-0.315)*(i-2030)/(2100-2030) + RF_central[i-1765]*(i-2030)/(2100-2030);
 
-    RF_central[i-1765] = RF_central[i-1765]*(2100-i)/(2100-2030) + (rf_2100_val-0.315)*(i-2030)/(2100-2030) + RF_central[i-1765]*(i-2030)/(2100-2030);
+    // RF_central[i-1765] = RF_2030_fixed[i-1765]*(rf_2100_val - RF_middle_original[2100-1765])/(RF_2030_fixed[2100-1765] - RF_middle_original[2100-1765])  +  RF_central[i-1765]*(RF_2030_fixed[2100-1765] - rf_2100_val)/(RF_2030_fixed[2100-1765] - RF_middle_original[2100-1765]);
+
+    RF_central[i-1765] = RF_central[i-1765]*(RF_2030_fixed_original[2100-1765] - rf_2100_val)/(RF_2030_fixed_original[2100-1765] - RF_middle_original[2100-1765]) + RF_2030_fixed_central[i-1765]*(rf_2100_val - RF_middle_original[2100-1765])/(RF_2030_fixed_original[2100-1765] - RF_middle_original[2100-1765]);
+
+    // RF_central[i-1765]*(2100-i)/(2100-2030) + (rf_2100_val-0.315)*(i-2030)/(2100-2030) + RF_central[i-1765]*(i-2030)/(2100-2030);
+
   };
 
   return RF_central;
 };
 
-RF_top = def_otherRF(RF_top_original, 0.315);
-RF_bottom = def_otherRF(RF_bottom_original, 0.315);
-RF_middle = def_otherRF(RF_middle_original, 0.315);
+RF_top = def_otherRF(RF_top_original, 0.315, RF_middle_original);
+RF_bottom = def_otherRF(RF_bottom_original, 0.315, RF_middle_original);
+RF_middle = def_otherRF(RF_middle_original, 0.315, RF_middle_original);
 
 
 
@@ -350,28 +361,28 @@ var defTraces = [{
   x: [2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100],
   y: [1.056,1.079,1.103,1.127,1.151,1.176,1.201,1.226,1.25,1.273,1.295,1.317,1.338,1.357,1.375,1.391,1.407,1.422,1.435,1.446,1.458,1.468,1.476,1.484,1.491,1.497,1.502,1.507,1.51,1.513,1.515,1.516,1.517,1.517,1.517,1.515,1.513,1.51,1.507,1.503,1.499,1.495,1.49,1.485,1.48,1.475,1.47,1.465,1.461,1.456,1.45,1.445,1.44,1.435,1.429,1.424,1.419,1.414,1.409,1.405,1.4,1.396,1.392,1.388,1.384,1.381,1.377,1.374,1.371,1.368,1.365,1.362,1.358,1.355,1.352,1.349,1.346,1.343,1.34,1.338,1.335,1.332,1.329],
   visible: false,
-  line: {color: 'rgba(100,100,100,0.2)'},
+  line: {color: 'rgba(100,100,100,0.6)'},
   name: '50th %-ile',
-  opacity: 0.2,
+  opacity: 0.6,
   hoverinfo: 'none',
 }, {
   x: [2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100],
   y: [0.845,0.859,0.874,0.889,0.904,0.92,0.935,0.95,0.964,0.978,0.991,1.003,1.015,1.026,1.036,1.046,1.054,1.062,1.069,1.076,1.082,1.087,1.092,1.095,1.099,1.102,1.104,1.106,1.107,1.108,1.109,1.109,1.109,1.108,1.107,1.106,1.104,1.102,1.099,1.096,1.094,1.091,1.087,1.084,1.081,1.078,1.074,1.071,1.068,1.065,1.062,1.058,1.055,1.052,1.048,1.045,1.042,1.039,1.036,1.033,1.03,1.028,1.025,1.023,1.021,1.019,1.017,1.015,1.013,1.011,1.009,1.007,1.005,1.003,1.002,1,0.998,0.996,0.995,0.993,0.992,0.99,0.988],
   visible: true,
-  line: {color: 'rgba(100,100,100,0.2)'},
+  line: {color: 'rgba(100,100,100,0.6)'},
   name: '17th %-ile',
-  opacity: 0.2,
+  opacity: 0.6,
   hoverinfo: 'none',
 }, {
   x: [2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100],
   y: [1.263,1.292,1.322,1.354,1.386,1.42,1.453,1.487,1.52,1.552,1.584,1.614,1.644,1.672,1.697,1.722,1.745,1.767,1.787,1.805,1.822,1.838,1.853,1.866,1.877,1.888,1.897,1.906,1.913,1.919,1.923,1.927,1.931,1.933,1.935,1.935,1.934,1.932,1.929,1.926,1.922,1.918,1.914,1.909,1.904,1.899,1.894,1.889,1.883,1.878,1.873,1.867,1.861,1.855,1.849,1.843,1.838,1.832,1.828,1.823,1.818,1.813,1.809,1.805,1.801,1.797,1.794,1.791,1.788,1.784,1.781,1.778,1.775,1.771,1.768,1.765,1.762,1.759,1.756,1.753,1.75,1.747,1.744],
   visible: true,
-  line: {color: 'rgba(100,100,100,0.2)'},
+  line: {color: 'rgba(100,100,100,0.6)'},
   name: '83th %-ile',
-  opacity: 0.2,
+  opacity: 0.6,
   hoverinfo: 'none',
   fill: 'tonexty', 
-  fillcolor: 'rgba(100,100,100,0.2)'
+  fillcolor: 'rgba(100,100,100,0.6)'
 },
 
 // blue plume to 2100
@@ -379,25 +390,25 @@ var defTraces = [{
   x: [2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100],
   y: [1.056,1.079,1.103,1.127,1.151,1.176,1.201,1.224,1.247,1.269,1.29,1.31,1.329,1.345,1.36,1.373,1.385,1.396,1.404,1.411,1.417,1.421,1.423,1.425,1.424,1.423,1.422,1.419,1.416,1.412,1.408,1.403,1.398,1.393,1.388,1.383,1.377,1.371,1.366,1.36,1.354,1.348,1.343,1.337,1.332,1.326,1.321,1.316,1.311,1.306,1.301,1.296,1.291,1.286,1.281,1.276,1.271,1.267,1.263,1.259,1.255,1.251,1.247,1.244,1.241,1.238,1.235,1.232,1.229,1.227,1.224,1.221,1.218,1.216,1.213,1.21,1.208,1.205,1.203,1.2,1.198,1.195,1.193],
   visible: false,
-  line: {color: 'rgba(84,130,255,0.2)'},
+  line: {color: 'rgba(84,130,255,0.8)'},
   name: '50th %-ile',
-  opacity: 0.2,
+  opacity: 0.8,
   hoverinfo: 'none',
 }, {
   x: [2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100],
   y: [0.845,0.859,0.874,0.889,0.904,0.92,0.934,0.949,0.962,0.975,0.988,0.999,1.01,1.02,1.028,1.035,1.042,1.048,1.052,1.056,1.059,1.061,1.062,1.062,1.061,1.06,1.059,1.057,1.054,1.052,1.049,1.046,1.043,1.039,1.036,1.033,1.029,1.025,1.021,1.018,1.014,1.011,1.007,1.004,1,0.997,0.994,0.991,0.988,0.985,0.982,0.979,0.976,0.972,0.969,0.967,0.964,0.961,0.959,0.956,0.954,0.952,0.95,0.948,0.946,0.944,0.942,0.941,0.939,0.937,0.936,0.934,0.933,0.931,0.93,0.928,0.927,0.925,0.924,0.922,0.921,0.92,0.918],
   visible: true,
-  line: {color: 'rgba(84,130,255,0.2)'},
+  line: {color: 'rgba(84,130,255,0.8)'},
   name: '17th %-ile',
-  opacity: 0.2,
+  opacity: 0.8,
   hoverinfo: 'none',
 }, {
   x: [2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100],
   y: [1.263,1.292,1.322,1.354,1.386,1.419,1.452,1.485,1.517,1.547,1.577,1.605,1.631,1.655,1.677,1.696,1.714,1.731,1.744,1.755,1.765,1.772,1.778,1.781,1.783,1.783,1.782,1.78,1.778,1.774,1.77,1.765,1.761,1.756,1.75,1.744,1.738,1.732,1.725,1.719,1.712,1.706,1.7,1.693,1.687,1.681,1.675,1.67,1.664,1.659,1.653,1.647,1.642,1.636,1.63,1.624,1.619,1.614,1.609,1.604,1.6,1.596,1.592,1.588,1.585,1.582,1.579,1.576,1.573,1.57,1.567,1.564,1.562,1.559,1.556,1.553,1.55,1.548,1.545,1.543,1.54,1.537,1.535],
   visible: true,
-  line: {color: 'rgba(84,130,255,0.2)'},
+  line: {color: 'rgba(84,130,255,0.8)'},
   name: '83th %-ile',
-  opacity: 0.2,
+  opacity: 0.8,
   hoverinfo: 'none',
   fill: 'tonexty',
   fillcolor: 'rgba(84,130,255,0.2)'
@@ -408,25 +419,25 @@ var defTraces = [{
   x: [2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100],
   y: [1.056,1.079,1.103,1.127,1.151,1.176,1.201,1.226,1.25,1.273,1.295,1.317,1.338,1.358,1.376,1.394,1.411,1.426,1.441,1.455,1.468,1.481,1.492,1.503,1.513,1.522,1.531,1.538,1.545,1.552,1.558,1.563,1.567,1.571,1.574,1.576,1.578,1.579,1.58,1.58,1.579,1.579,1.578,1.576,1.575,1.573,1.572,1.57,1.568,1.566,1.564,1.562,1.56,1.558,1.556,1.554,1.552,1.55,1.548,1.546,1.544,1.542,1.54,1.538,1.537,1.535,1.533,1.531,1.53,1.528,1.527,1.525,1.524,1.522,1.521,1.52,1.518,1.517,1.516,1.515,1.513,1.512,1.511],
   visible: false,
-  line: {color: 'rgba(128,0,104,0.2)'},
+  line: {color: 'rgba(128,0,104,0.6)'},
   name: '50th %-ile',
-  opacity: 0.2,
+  opacity: 0.6,
   hoverinfo: 'none',
 }, {
   x: [2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100],
   y: [0.845,0.859,0.874,0.889,0.904,0.92,0.935,0.95,0.964,0.978,0.991,1.003,1.015,1.027,1.037,1.047,1.056,1.065,1.073,1.081,1.088,1.094,1.1,1.106,1.111,1.116,1.12,1.124,1.127,1.13,1.133,1.135,1.137,1.138,1.139,1.14,1.141,1.141,1.14,1.14,1.139,1.138,1.137,1.136,1.134,1.133,1.132,1.13,1.129,1.127,1.126,1.124,1.122,1.121,1.12,1.118,1.117,1.115,1.114,1.112,1.111,1.11,1.109,1.107,1.106,1.105,1.104,1.103,1.102,1.101,1.1,1.099,1.098,1.097,1.096,1.095,1.094,1.094,1.093,1.092,1.091,1.091,1.09],
   visible: true,
-  line: {color: 'rgba(128,0,104,0.2)'},
+  line: {color: 'rgba(128,0,104,0.6)'},
   name: '17th %-ile',
-  opacity: 0.2,
+  opacity: 0.6,
   hoverinfo: 'none',
 }, {
   x: [2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100],
   y: [1.263,1.292,1.322,1.354,1.386,1.42,1.453,1.487,1.52,1.552,1.584,1.614,1.644,1.673,1.7,1.726,1.75,1.774,1.796,1.817,1.837,1.857,1.875,1.892,1.908,1.923,1.937,1.95,1.962,1.973,1.983,1.993,2.001,2.009,2.015,2.021,2.026,2.03,2.033,2.035,2.036,2.038,2.038,2.039,2.039,2.038,2.038,2.037,2.037,2.036,2.035,2.034,2.033,2.032,2.031,2.03,2.029,2.028,2.026,2.025,2.024,2.023,2.022,2.021,2.02,2.02,2.019,2.018,2.017,2.016,2.016,2.015,2.014,2.014,2.013,2.013,2.012,2.012,2.011,2.011,2.011,2.01,2.01],
   visible: true,
-  line: {color: 'rgba(128,0,104,0.2)'},
+  line: {color: 'rgba(128,0,104,0.6)'},
   name: '83th %-ile',
-  opacity: 0.2,
+  opacity: 0.6,
   hoverinfo: 'none',
   fill: 'tonexty',
   fillcolor: 'rgba(128,0,104,0.2)'
@@ -616,14 +627,14 @@ var defTraces = [{
 {
   x: years.slice(2018-1765,2101-1765),
   y: T_top.slice(2018-1765,2101-1765),
-  visible: true,
+  visible: false,
   line: {color: 'rgb(0, 0, 0)'},
   name: 'top',
 }, 
 {
   x: years.slice(2018-1765,2101-1765),
   y: T_bottom.slice(2018-1765,2101-1765),
-  visible: true,
+  visible: false,
   line: {color: 'rgb(0, 0, 0)'},
   name: 'bottom',
 }];
@@ -645,8 +656,8 @@ var layout = {
   yaxis: {
     fixedrange: true,
     showline: true,
-    domain: [0.55,1],
-    range: [0, 2.5],
+    domain: [0.45,1],
+    range: [0, 3.25],
     anchor: 'x1',
     title: 'Temperature relative to 1850-1900 (℃)',
     titlefont: {size: 12},
@@ -664,7 +675,7 @@ var layout = {
   },
   yaxis2: {
     fixedrange: true,
-    domain: [0,0.45],
+    domain: [0,0.4],
     showline: true,
     showgrid: false,
     range: [0, 60],
@@ -675,7 +686,7 @@ var layout = {
   },
   xaxis3: {
     fixedrange: true,
-    domain: [0.35,0.65],
+    domain: [0.35,0.64],
     showgrid: false,
     range: [1960, 2100],
     anchor: 'y3',
@@ -685,10 +696,10 @@ var layout = {
   },
   yaxis3: {
     fixedrange: true,
-    domain: [0,0.45],
+    domain: [0,0.4],
     showline: true,
     showgrid: false,
-    range: [0, 3.5],
+    range: [0, 4.0],
     anchor: 'x3',
     title: 'Cumulative emissions (TtCO<sub>2</sub>)',
     titlefont: {size: 12},
@@ -706,10 +717,10 @@ var layout = {
   },
   yaxis4: {
     fixedrange: true,
-    domain: [0,0.45],
+    domain: [0,0.4],
     showline: true,
     showgrid: false,
-    range: [0, 3.5],
+    range: [0, 4.0],
     anchor: 'x4',
     title: 'non-CO<sub>2</sub> RF (W/m<sup>2</sup>)',
     titlefont: {size: 12},
@@ -735,30 +746,43 @@ var output2 = document.getElementById("demo2");
 output.innerHTML = slider.value;
 output2.innerHTML = slider2.value;
 
+var grey_on = true;
+var blue_on = false;
+var purple_on = false;
 
 slider.oninput = function() {
 
-  var slider2_val = slider2.value / 100;
-  
-  var RF_top_original = Array(years.length).fill(0.0);
-  var RF_bottom_original = Array(years.length).fill(0.0);
-  for (var i = 0; i <= years.length-1; i++) {
-    RF_top_original[i] = RF_gauss[i]*top_gauss_sf + RF_aero[i]*top_aero_sf + RF_rest[i];
-    RF_bottom_original[i] = RF_gauss[i]*bottom_gauss_sf + RF_aero[i]*bottom_aero_sf + RF_rest[i];
-
-    if (i>2020-1765) {
-      RF_top_original[i] = RF_top_original[2020-1765] + RF_future[i-2020+1765] - RF_future[0];
-      RF_bottom_original[i] = RF_bottom_original[2020-1765] + RF_future[i-2020+1765] - RF_future[0];
-    };
+  if (purple_on == false) {
+    defTraces[11].visible = false;
+    defTraces[12].visible = false;
   };
-  
-  RF_top = def_otherRF(RF_top_original, slider2_val);
-  RF_bottom = def_otherRF(RF_bottom_original, slider2_val);
 
+  defTraces[28].visible = true;
+  defTraces[29].visible = true;
+
+  var slider2_val = slider2.value / 100;
+  var RF_top = def_otherRF(RF_top_original, slider2_val, RF_middle_original);
+  var RF_bottom = def_otherRF(RF_bottom_original, slider2_val, RF_middle_original);
+  var RF_middle = def_otherRF(RF_middle_original, slider2_val, RF_middle_original);
+
+  defTraces[27].y = RF_middle.slice(2011-1765,2101-1765);
 
 
   output.innerHTML = this.value;
 
+  // E_hist = Array(years.length).fill(0.0);
+
+  // for (var i = 0; i <= 2020-1765; i++) {
+  //   E_hist[i] = E_pre2020[i];
+  // };
+
+  // var E_zero_date = this.value;
+  // // if (Math.abs(E_zero_date - 2040) < 3) {
+  // //   E_zero_date = 2040;
+  // //   output.innerHTML = E_zero_date;
+  // // };
+
+  // E_update = def_emissions(E_hist, E_zero_date);
   E_hist = Array(years.length).fill(0.0);
 
   for (var i = 0; i <= 2020-1765; i++) {
@@ -794,6 +818,55 @@ slider.oninput = function() {
 
   defTraces[28].y = T_top.slice(2018-1765,2101-1765);
 
+  // console.log(T_top[2100-1765]<1.52);
+  // console.log('test log');
+
+  if ((E_update[2040-1765] == 0)) {
+    // (grey_on=true)*(purple_on==false)
+    // T_top[2100-1765] < 1.52
+    // console.log('yas')
+    defTraces[8].color = 'rgba(84,130,255,0.5)';
+    defTraces[8].opacity = 0.5;
+    defTraces[9].fillcolor = 'rgba(84,130,255,0.5)';
+    defTraces[9].opacity = 0.5;
+    defTraces[9].visible = true;
+    defTraces[8].visible = true;
+    defTraces[6].opacity = 0.0;
+    defTraces[5].opacity = 0.0;
+    defTraces[5].visible = false;
+    defTraces[6].visible = false;
+    defTraces[6].fillcolor = 'rgba(100,100,100,0.1)';
+    defTraces[29].line.color = 'rgba(75,50,255,1.0)';
+    defTraces[28].line.color = 'rgba(75,50,255,1.0)';
+
+    grey_on = false;
+    blue_on = true;
+  } else if ((E_update[2040-1765] > 0)) {
+    // *(blue_on=true)*(purple_on==false)
+    // T_top[2100-1765] > 1.52
+    defTraces[8].color = 'rgba(84,130,255,0.0)';
+    defTraces[8].opacity = 0.0;
+    defTraces[9].fillcolor = 'rgba(84,130,255,0.0)';
+    defTraces[9].opacity = 0.0;
+    defTraces[9].visible = false;
+    defTraces[8].visible = false;
+    defTraces[29].line.color = 'rgba(0,0,0,1.0)';
+    defTraces[28].line.color = 'rgba(0,0,0,1.0)';
+    if (purple_on == true) {
+      grey_on = false;
+      blue_on = false;
+    } else {
+      defTraces[6].visible = true;
+      defTraces[5].visible = true;
+      defTraces[6].opacity = 0.0;
+      defTraces[5].opacity = 0.0;
+      defTraces[6].fillcolor = 'rgba(100,100,100,0.5)';
+      grey_on = true;
+      blue_on = false;
+    };
+  };
+
+  // console.log(blue_on, purple_on, grey_on);
 
 
 
@@ -836,6 +909,7 @@ slider.oninput = function() {
 
   defTraces[26].y = G_update.slice(2016-1765,2101-1765);
 
+
   Plotly.deleteTraces(panel_a_div, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]);
   Plotly.addTraces(panel_a_div, defTraces); 
 };
@@ -845,25 +919,17 @@ slider2.oninput = function() {
   output2.innerHTML = this.value / 100;
 
   var slider2_val = this.value / 100;
-  
-  var RF_top_original = Array(years.length).fill(0.0);
-  var RF_bottom_original = Array(years.length).fill(0.0);
-  var RF_middle_original = Array(years.length).fill(0.0);
-  for (var i = 0; i <= years.length-1; i++) {
-    RF_top_original[i] = RF_gauss[i]*top_gauss_sf + RF_aero[i]*top_aero_sf + RF_rest[i];
-    RF_bottom_original[i] = RF_gauss[i]*bottom_gauss_sf + RF_aero[i]*bottom_aero_sf + RF_rest[i];
-    RF_middle_original[i] = RF_gauss[i]*middle_gauss_sf + RF_aero[i]*middle_aero_sf + RF_rest[i];
 
-    if (i>2020-1765) {
-      RF_top_original[i] = RF_top_original[2020-1765] + RF_future[i-2020+1765] - RF_future[0];
-      RF_bottom_original[i] = RF_bottom_original[2020-1765] + RF_future[i-2020+1765] - RF_future[0];
-      RF_middle_original[i] = RF_middle_original[2020-1765] + RF_future[i-2020+1765] - RF_future[0];
-    };
+  if (blue_on == false) {
+    defTraces[8].visible = false;
+    defTraces[9].visible = false;
   };
+  defTraces[28].visible = true;
+  defTraces[29].visible = true;
 
-  RF_top = def_otherRF(RF_top_original, slider2_val);
-  RF_bottom = def_otherRF(RF_bottom_original, slider2_val);
-  RF_middle = def_otherRF(RF_middle_original, slider2_val);
+  RF_top = def_otherRF(RF_top_original, slider2_val, RF_middle_original);
+  RF_bottom = def_otherRF(RF_bottom_original, slider2_val, RF_middle_original);
+  RF_middle = def_otherRF(RF_middle_original, slider2_val, RF_middle_original);
 
   defTraces[27].y = RF_middle.slice(2011-1765,2101-1765);
 
@@ -917,6 +983,65 @@ slider2.oninput = function() {
 
   defTraces[28].y = T_top.slice(2018-1765,2101-1765);
   defTraces[29].y = T_bottom.slice(2018-1765,2101-1765);
+
+
+
+  if ((RF_middle[2100-1765] >= RF_middle[2030-1765])) {
+    // *(grey_on = true)*(blue_on==false)
+    // T_top[2100-1765] > 2.0
+    defTraces[11].color = 'rgba(128,0,104,0.5)';
+    defTraces[11].opacity = 0.5;
+    defTraces[12].fillcolor = 'rgba(128,0,104,0.5)';
+    defTraces[12].opacity = 0.5;
+    defTraces[12].visible = true;
+    defTraces[11].visible = true;
+    defTraces[6].opacity = 0.0;
+    defTraces[5].opacity = 0.0;
+    defTraces[5].visible = false;
+    defTraces[6].visible = false;
+    // defTraces[6].fillcolor = 'rgba(100,100,100,0.0)';
+    defTraces[29].line.color = 'rgba(128,0,104,1.0)';
+    defTraces[28].line.color = 'rgba(128,0,104,1.0)';
+    // purple_on = true;
+    // grey_on = false;
+    // blue_on = false;
+    
+    // if (blue_on == true) {
+    grey_on = false;
+    purple_on = true;
+  } else if ((RF_middle[2100-1765] < RF_middle[2030-1765])) {
+    // *(purple_on=true)*(blue_on==false)
+    // T_top[2100-1765] < 2.0
+    defTraces[11].color = 'rgba(128,0,104,0.0)';
+    defTraces[11].opacity = 0.0;
+    defTraces[12].fillcolor = 'rgba(128,0,104,0.0)';
+    defTraces[12].opacity = 0.0;
+    defTraces[12].visible = false;
+    defTraces[11].visible = false;
+    defTraces[29].line.color = 'rgba(0,0,0,1.0)';
+    defTraces[28].line.color = 'rgba(0,0,0,1.0)';
+
+    if (blue_on == true) {
+      grey_on = false;
+      purple_on = false;
+      defTraces[6].visible = false;
+      defTraces[5].visible = false;
+      defTraces[6].opacity = 0.0;
+      defTraces[5].opacity = 0.0;
+      defTraces[6].fillcolor = 'rgba(100,100,100,0.0)';
+    } else {
+      // console.log('now_2');
+      grey_on = true;
+      purple_on = false;
+      defTraces[6].visible = true;
+      defTraces[5].visible = true;
+      defTraces[6].opacity = 0.5;
+      defTraces[5].opacity = 0.5;
+      defTraces[6].fillcolor = 'rgba(100,100,100,0.5)';
+    };
+  };
+
+
 
   Plotly.deleteTraces(panel_a_div, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]);
   Plotly.addTraces(panel_a_div, defTraces);
