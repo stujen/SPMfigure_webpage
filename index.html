@@ -7,6 +7,7 @@
 <link rel='stylesheet' href='https://simeydotme.github.io/jQuery-ui-Slider-Pips/dist/css/jqueryui.min.css'>
 <link rel='stylesheet' href='https://simeydotme.github.io/jQuery-ui-Slider-Pips/dist/css/jquery-ui-slider-pips.min.css'>
 <link rel='stylesheet' href='https://simeydotme.github.io/jQuery-ui-Slider-Pips/dist/css/app.min.css'>
+<!-- <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'> -->
 <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
@@ -49,16 +50,46 @@
 
     </main>
 
+    <!-- Trigger/Open The Modal -->
+    <div id='buttonWrapper'>
+        <button id="myBtn">Tutorial</button>
+    </div>
+
     <p id='below_stuff'>For further information see: <a href="https://www.ipcc.ch/sr15/" target="_blank">https://www.ipcc.ch/sr15/</a></p>
 
     <p id='finalstuff' style="font-size: 0.8em">Written and hosted by <a target="_blank" href="https://github.com/stujen/SPMfigure_webpage">Stuart Jenkins</a> using GitHub Pages. <p id='date' style="float:right; text-align: center; font-size: 0.8em"></p></p>
 
 </div>
 
+
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>SPM.1 Interactive: How to use</h2>
+
+    <p id='modal_text'>This interactive allows the user to change the date of net-zero CO<sub>2</sub> emissions (the time at which anthropogenic emissions of CO<sub>2</sub> reach zero) and the value of the end-of-century non-CO<sub>2</sub> radiative forcing (the energy imbalance in the climate system attributable to pollutants other than CO<sub>2</sub>) and see the globally averaged temperature response.</p>
+
+    <p id='modal_text'>Choose the position of the blue dot on panel b to set the net-zero date for CO<sub>2</sub> emissions, and use the purple dot on panel d to set the non-CO<sub>2</sub> radiative forcing in 2100.</p>
+
+    <p id='modal_text'>For further information on the design of the figure please refer to the IPCC Special Report on the Global Warming of 1.5°C.</p>
+  </div>
+
+</div>
+
+
+
+
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script src='https://simeydotme.github.io/jQuery-ui-Slider-Pips/dist/js/jquery-plus-ui.min.js'></script>
 <script src='https://simeydotme.github.io/jQuery-ui-Slider-Pips/dist/js/jquery-ui-slider-pips.js'></script>
 <script  src="./javascript/index.js"></script>
+
+
 
 </body>
 </html>

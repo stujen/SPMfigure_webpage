@@ -909,3 +909,136 @@ slider2.oninput = function() {
   Plotly.addTraces(panel_a_div, defTraces);
 };
 
+
+
+
+
+
+
+
+$(document).ready(function() {
+  prep_modal();
+});
+
+function prep_modal()
+{
+  $(".modal").each(function() {
+
+  var element = this;
+  var pages = $(this).find('.modal-split');
+
+  if (pages.length != 0)
+  {
+      pages.hide();
+      pages.eq(0).show();
+
+      var b_button = document.createElement("button");
+                b_button.setAttribute("type","button");
+                b_button.setAttribute("class","btn btn-primary");
+                b_button.setAttribute("style","display: none;");
+                b_button.innerHTML = "Back";
+
+      var n_button = document.createElement("button");
+                n_button.setAttribute("type","button");
+                n_button.setAttribute("class","btn btn-primary");
+                n_button.innerHTML = "Next";
+
+      $(this).find('.modal-footer').append(b_button).append(n_button);
+
+
+      var page_track = 0;
+
+      $(n_button).click(function() {
+        
+        this.blur();
+
+        if(page_track == 0)
+        {
+          $(b_button).show();
+        }
+
+        if(page_track == pages.length-2)
+        {
+          $(n_button).text("Submit");
+        }
+
+        if(page_track == pages.length-1)
+        {
+          $(element).find("form").submit();
+        }
+
+        if(page_track < pages.length-1)
+        {
+          page_track++;
+
+          pages.hide();
+          pages.eq(page_track).show();
+        }
+
+
+      });
+
+      $(b_button).click(function() {
+
+        if(page_track == 1)
+        {
+          $(b_button).hide();
+        }
+
+        if(page_track == pages.length-1)
+        {
+          $(n_button).text("Next");
+        }
+
+        if(page_track > 0)
+        {
+          page_track--;
+
+          pages.hide();
+          pages.eq(page_track).show();
+        }
+
+
+      });
+
+  }
+
+  });
+};
+
+
+
+
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+$(window).on('load',function(){
+        modal.style.display = 'block';
+    });
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
