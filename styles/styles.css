@@ -84,8 +84,8 @@ h1 {
 #figure_header { color: #c7cdd5;
   text-align: left;
   padding: 40px 0px 0px;
-  font-weight: 200;
-  font-size: 1.5em;
+  font-weight: 370;
+  font-size: 1.2em;
 }
 
 #below_stuff { color: #c7cdd5;
@@ -110,15 +110,15 @@ h1 {
   float:left;
   text-align: left;
   padding: 0px 82px 0px;
-  font-weight: 200;
-  font-size: 1em;
+  font-weight: 500;
+  font-size: 1.3em;
 }
 .other3 { color: #c7cdd5;
   float:right;
   text-align: right;
   padding: 0px 82px 0px;
-  font-weight: 200;
-  font-size: 1em;
+  font-weight: 500;
+  font-size: 1.3em;
 }
 
 .slider_wrapper { /*color: #c7cdd5;*/
@@ -143,12 +143,50 @@ p:nth-of-type(1) {
   margin-top: 3em;
 }
 p:last-child {
-  font-weight: 100;
-  font-size: 1em;
+  color: #c7cdd5;
+  font-weight: 500;
+  font-size: 1.3em;
 }
 p:last-child a {
   font-weight: 300;
 }
+
+#panela_label {position: absolute;
+  width: 92px;
+  height: 50px;
+  top: -20px;
+  left: 40px;
+  }
+
+#panelb_label {position: absolute;
+  width: 92px;
+  height: 50px;
+  top: 270px;
+  left: 40px;
+  }
+
+#panelc_label {position: absolute;
+  width: 92px;
+  height: 50px;
+  top: 270px;
+  left: 320px;
+  }
+
+#paneld_label {position: absolute;
+  width: 92px;
+  height: 50px;
+  top: 270px;
+  left: 610px;
+  }
+
+#labela {color: #000000;
+  }
+#labelb {color: #000000;
+  }
+#labelc {color: #000000;
+  }
+#labeld {color: #000000;
+  }
 
 .stuff {
   padding: 0px 0px 0px;
