@@ -586,8 +586,36 @@ var defTraces = [{
   opacity: 0.2,
   hoverinfo: 'none',
 },
-
-// to change each time slider is changed    25
+// 25
+{
+  x: [1950,2110],
+  y: [1.5,1.5],
+  visible: true,
+  line: {color: 'rgba(0,0,0,0.4)',
+          width: 0.5,},
+  name: '1.5℃',
+},
+{
+  x: [2018,2018],
+  y: [-0.1,1.04],
+  visible: true,
+  line: {color: 'rgba(0,0,0,0.1)',
+          width: 0.5,
+          },
+  name: '2018',
+},
+{
+  x: [2018],
+  y: [1.04],
+  visible: true,
+  line: {color: 'rgb(225, 120, 0)',
+          mode: 'markers',
+          type: 'scatter',
+          },
+  marker: { size: 10 },
+  name: 'dot',
+},
+// to change each time slider is changed    28
 {
   x: years.slice(2018-1765,2101-1765),
   y: E_plot.slice(2018-1765,2101-1765),
@@ -631,37 +659,6 @@ var defTraces = [{
           width: 4},
   name: 'bottom',
 }, ];
-// {
-//   x: [1950,2110],
-//   y: [1.5,1.5],
-//   visible: true,
-//   line: {color: 'rgba(0,0,0,0.4)',
-//           width: 0.5,},
-//           // dash:'dot'},
-//   name: '1.5℃',
-// }, 
-// {
-//   x: [2018,2018],
-//   y: [-0.1,1.04],
-//   visible: true,
-//   line: {color: 'rgba(0,0,0,0.1)',
-//           width: 0.5,
-//           },
-//           // dash:'dot'},
-//   name: '2018',
-// }, 
-// {
-//   x: [2018],
-//   y: [1.04],
-//   visible: true,
-//   line: {color: 'rgb(225, 120, 0)',
-//           mode: 'markers',
-//           type: 'scatter',
-//           },
-//   marker: { size: 10 },
-//           // dash:'dot'},
-//   name: '2018',
-// }];
 
 
 var layout = {
@@ -801,9 +798,7 @@ var output2 = document.getElementById("demo2");
 output.innerHTML = slider.value;
 output2.innerHTML = slider2.value;
 
-var grey_on = true;
-var blue_on = false;
-var purple_on = false;
+
 
 slider.oninput = function() {
 
@@ -813,7 +808,7 @@ slider.oninput = function() {
   var RF_bottom = def_otherRF(RF_bottom_original, slider2_val, RF_middle_original);
   var RF_middle = def_otherRF(RF_middle_original, slider2_val, RF_middle_original);
 
-  defTraces[27].y = RF_middle.slice(2011-1765,2101-1765);
+  defTraces[30].y = RF_middle.slice(2011-1765,2101-1765);
 
 
   output.innerHTML = this.value;
@@ -852,7 +847,7 @@ slider.oninput = function() {
     T_top[i] -= avg_top;
   };
 
-  defTraces[28].y = T_top.slice(2018-1765,2101-1765);
+  defTraces[31].y = T_top.slice(2018-1765,2101-1765);
 
 
 
@@ -871,7 +866,7 @@ slider.oninput = function() {
     T_bottom[i] -= avg_bottom;
   };
 
-  defTraces[29].y = T_bottom.slice(2018-1765,2101-1765);
+  defTraces[32].y = T_bottom.slice(2018-1765,2101-1765);
 
 
 
@@ -880,7 +875,7 @@ slider.oninput = function() {
     E_update[i] *= 44/12;
   };
 
-  defTraces[25].y = E_update.slice(2018-1765,2101-1765);
+  defTraces[28].y = E_update.slice(2018-1765,2101-1765);
 
   var G_update = Array(E_update.length).fill(0);
   G_update[0] = E_update[0];
@@ -893,10 +888,10 @@ slider.oninput = function() {
     G_update[i] -= to_remove;
   };
 
-  defTraces[26].y = G_update.slice(2016-1765,2101-1765);
+  defTraces[29].y = G_update.slice(2016-1765,2101-1765);
 
 
-  Plotly.deleteTraces(panel_a_div, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]);
+  Plotly.deleteTraces(panel_a_div, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32]);
   Plotly.addTraces(panel_a_div, defTraces); 
 };
 
@@ -911,7 +906,7 @@ slider2.oninput = function() {
   RF_bottom = def_otherRF(RF_bottom_original, slider2_val, RF_middle_original);
   RF_middle = def_otherRF(RF_middle_original, slider2_val, RF_middle_original);
 
-  defTraces[27].y = RF_middle.slice(2011-1765,2101-1765);
+  defTraces[30].y = RF_middle.slice(2011-1765,2101-1765);
 
 
 
@@ -961,11 +956,11 @@ slider2.oninput = function() {
     T_bottom[i] -= avg_bottom;
   };
 
-  defTraces[28].y = T_top.slice(2018-1765,2101-1765);
-  defTraces[29].y = T_bottom.slice(2018-1765,2101-1765);
+  defTraces[31].y = T_top.slice(2018-1765,2101-1765);
+  defTraces[32].y = T_bottom.slice(2018-1765,2101-1765);
 
 
-  Plotly.deleteTraces(panel_a_div, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]);
+  Plotly.deleteTraces(panel_a_div, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32]);
   Plotly.addTraces(panel_a_div, defTraces);
 };
 
