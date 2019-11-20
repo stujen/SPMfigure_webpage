@@ -99,21 +99,21 @@ h1 {
   padding-bottom: 20px;
 }
 
-.other { color: #c7cdd5;
+.description_of_use { color: #c7cdd5;
   text-align: left;
   padding: 0px 0px 0px;
   /*font-weight: 300;*/
   /*font-size: 1.3em;*/
 }
 
-.other2 { color: #c7cdd5;
+.net_zero_year { color: #c7cdd5;
   float:left;
   text-align: left;
   padding: 0px 82px 0px;
   font-weight: 500;
   font-size: 1.3em;
 }
-.other3 { color: #c7cdd5;
+.non_co2_rf { color: #c7cdd5;
   float:right;
   text-align: right;
   padding: 0px 82px 0px;
