@@ -664,6 +664,7 @@ var defTraces = [{
 var layout = {
   margin: {t: 40, b: 60, l: 60, r: 40},
   showlegend: false,
+  hovermode: 'closest',
   xaxis: {
     fixedrange: true,
     showgrid: false,

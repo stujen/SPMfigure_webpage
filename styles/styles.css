@@ -260,7 +260,7 @@ p:last-child a {
 
 #buttonWrapper {
   position: absolute;
-  left: 43%;
+  left: 37%;
 }
 
 #myBtn {
@@ -307,6 +307,7 @@ p:last-child a {
 
 #modal_text {
   color: rgb(120,120,120);
+  text-align: left;
 }
 
 
