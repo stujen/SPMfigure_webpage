@@ -159,7 +159,7 @@ p:last-child a {
   width: 550px;
   height: 50px;
   top: -20px;
-  left: 50px;
+  left: 55px;
   }
 
 #panelb_label {position: absolute;
@@ -184,7 +184,7 @@ p:last-child a {
   }
 
 #labela {color: #000000;
-  font-size: 1.0em;
+  font-size: 0.9em;
   font-weight: 300;
   }
 #labelb {color: #000000;
