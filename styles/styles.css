@@ -151,41 +151,54 @@ p:last-child a {
   font-weight: 300;
 }
 
+/*p.label {
+  text-align: left;
+}*/
+
 #panela_label {position: absolute;
-  width: 92px;
+  text-align:center;
+  width: 592px;
   height: 50px;
   top: -20px;
-  left: 40px;
+  left: 50px;
   }
 
 #panelb_label {position: absolute;
-  width: 92px;
+  width: 292px;
   height: 50px;
-  top: 270px;
-  left: 40px;
+  top: 300px;
+  left: 53px;
   }
 
 #panelc_label {position: absolute;
-  width: 92px;
+  width: 292px;
   height: 50px;
-  top: 270px;
-  left: 320px;
+  top: 300px;
+  left: 336px;
   }
 
 #paneld_label {position: absolute;
-  width: 92px;
+  width: 292px;
   height: 50px;
-  top: 270px;
-  left: 610px;
+  top: 300px;
+  left: 629px;
   }
 
 #labela {color: #000000;
+  font-size: 1.0em;
+  font-weight: 300;
   }
 #labelb {color: #000000;
+  font-size: 0.75em;
+  font-weight: 300;
   }
 #labelc {color: #000000;
+  font-size: 0.75em;
+  font-weight: 300;
   }
 #labeld {color: #000000;
+  font-size: 0.75em;
+  font-weight: 300;
   }
 
 .stuff {

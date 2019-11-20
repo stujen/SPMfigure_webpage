@@ -21,7 +21,7 @@
     <p id='para_above_plot2'>Here we present an interactive version of figure SPM.1 in the Summary for Policymakers to help users understand how cumulative emissions of CO<sub>2</sub> and other climate drivers determine the probability of limiting warming to 1.5℃.
 
     <main>
-            <p class='other'>Choose the year of net-zero CO<sub>2</sub> emissions and the global energy imbalance in 2100 due to other climate drivers, called the non-CO<sub>2</sub> radiative forcing, using the sliders below. Black lines on the top panel show how the likely range of human-induced warming responds using the same climate model used to generate the original figure. </p>
+            <p class='other'>Click and drag the blue dot to vary the year of net-zero CO<sub>2</sub> emissions. Click and drag the purple dot to vary the global energy imbalance in 2100 due to other climate drivers, called the non-CO<sub>2</sub> radiative forcing. Grey lines on the top panel show how the likely range of human-induced warming responds to those inputs using a simple climate model and the same methodology as the original figure. </p>
 
 
     	<h2 id='figure_header'>SPM.1: Figure 1 of the Summary for Policymakers of the IPCC’s Special Report on Global Warming of 1.5°C.</h2>
@@ -34,16 +34,16 @@
                 <input type="range" min="0" max="150" value="31" class="slider" id="myRange2">
             </div>
             <div id="panela_label">
-                <p id='labela'>a)</p>
+                <p id='labela' style="text-align:left"><b>a) Observed global temperature change and modeled <br />responses to stylized anthropogenic emissions and forcing pathways</b></p>
             </div>
             <div id="panelb_label">
-                <p id='labelb'>b)</p>
+                <p id='labelb' style="text-align:left"><b>b) Stylized net global CO<sub>2</sub> emissions</b></p>
             </div>
             <div id="panelc_label">
-                <p id='labelc'>c)</p>
+                <p id='labelc' style="text-align:left"><b>c) Cumulative net CO<sub>2</sub> emissions</b></p>
             </div>
             <div id="paneld_label">
-                <p id='labeld'>d)</p>
+                <p id='labeld' style="text-align:left"><b>d) Non-CO<sub>2</sub> radiative forcing</b></p>
             </div>
     	</div>
         <p class="other2">  Year of net-zero: <span id="demo"></span></p><p class="other3">2100 non-CO2 RF: <span id="demo2"></span> W/m2</p>
@@ -74,7 +74,7 @@
 
     <p id='modal_text'>This interactive allows the user to change the date of net-zero CO<sub>2</sub> emissions (the time at which anthropogenic emissions of CO<sub>2</sub> reach zero) and the value of the end-of-century non-CO<sub>2</sub> radiative forcing (the energy imbalance in the climate system attributable to pollutants other than CO<sub>2</sub>) and see the globally averaged temperature response.</p>
 
-    <p id='modal_text'>Choose the position of the blue dot on panel b to set the net-zero date for CO<sub>2</sub> emissions, and use the purple dot on panel d to set the non-CO<sub>2</sub> radiative forcing in 2100.</p>
+    <p id='modal_text'>Set the position of the blue dot on panel b to set the net-zero date for CO<sub>2</sub> emissions, and set the position of the purple dot on panel d to set the non-CO<sub>2</sub> radiative forcing in 2100.</p>
 
     <p id='modal_text'>For further information on the design of the figure please refer to the IPCC Special Report on the Global Warming of 1.5°C.</p>
   </div>
