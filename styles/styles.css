@@ -85,8 +85,7 @@ h1 {
   text-align: left;
   padding: 40px 0px 0px;
   font-weight: 370;
-  font-size: 1.2em;
-}
+  font-size: 1.2em70}
 
 #below_stuff { color: #c7cdd5;
   text-align: center;
@@ -157,7 +156,7 @@ p:last-child a {
 
 #panela_label {position: absolute;
   text-align:center;
-  width: 620px;
+  width: 700px;
   height: 50px;
   top: -20px;
   left: 50px;
